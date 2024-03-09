@@ -1,4 +1,5 @@
 import {Octokit} from "@octokit/rest";
+import fetch from "cross-fetch";
 import {version} from "../../package.json";
 import {getGitHubApiUri} from "../configuration/configuration";
 
@@ -8,6 +9,9 @@ export function getClient(token: string): Octokit {
   return new Octokit({
     auth: token,
     userAgent: userAgent,
-    baseUrl: getGitHubApiUri()
+    baseUrl: getGitHubApiUri(),
+    request: {
+      fetch
+    }
   });
 }
