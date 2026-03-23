@@ -8,10 +8,11 @@ import {BaseLanguageClient, LanguageClientOptions} from "vscode-languageclient";
 import {LanguageClient as BrowserLanguageClient} from "vscode-languageclient/browser";
 import {LanguageClient as NodeLanguageClient, ServerOptions, TransportKind} from "vscode-languageclient/node";
 import {userAgent} from "../api/api";
+import {getGitHubProxyOptions} from "../api/proxy";
 import {getSession} from "../auth/auth";
 import {getGitHubContext} from "../git/repository";
 import {WorkflowSelector, ActionSelector} from "./documentSelector";
-import {getGitHubApiUri, useEnterprise} from "../configuration/configuration";
+import {getGitHubApiUri, getGitHubBaseUri, useEnterprise} from "../configuration/configuration";
 
 let client: BaseLanguageClient;
 
@@ -28,6 +29,8 @@ export async function initLanguageServer(context: vscode.ExtensionContext) {
     sessionToken: session?.accessToken,
     userAgent: userAgent,
     gitHubApiUrl: useEnterprise() ? getGitHubApiUri() : undefined,
+    gitHubBaseUrl: useEnterprise() ? getGitHubBaseUri() : undefined,
+    proxy: isNode() ? getGitHubProxyOptions() : undefined,
     repos: ghContext?.repos.map(repo => ({
       id: repo.id,
       owner: repo.owner,

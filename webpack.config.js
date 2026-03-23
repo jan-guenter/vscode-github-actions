@@ -32,7 +32,13 @@ module.exports = (env, argv) => {
         path: require.resolve("path-browserify"),
         crypto: require.resolve("crypto-browserify"),
         stream: require.resolve("stream-browserify"),
-        timers: require.resolve("timers-browserify")
+        timers: require.resolve("timers-browserify"),
+        assert: false,
+        events: false,
+        http: false,
+        https: false,
+        net: false,
+        tls: false
       }
     },
     module: {
@@ -148,7 +154,14 @@ module.exports = (env, argv) => {
       },
       fallback: {
         buffer: require.resolve("buffer/"),
-        path: require.resolve("path-browserify")
+        path: require.resolve("path-browserify"),
+        assert: false,
+        events: false,
+        http: false,
+        https: false,
+        net: false,
+        tls: false,
+        util: false
       }
     }
   };

@@ -1,6 +1,12 @@
 .devcontainer
 .vscode
-node_modules
+node_modules/*
+!node_modules/cross-fetch/**
+!node_modules/node-fetch/**
+!node_modules/tunnel/**
+!node_modules/tr46/**
+!node_modules/webidl-conversions/**
+!node_modules/whatwg-url/**
 out/
 src/
 tsconfig.json

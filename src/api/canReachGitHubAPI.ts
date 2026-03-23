@@ -23,3 +23,7 @@ export async function canReachGitHubAPI() {
     return true;
   });
 }
+
+export function resetGitHubAPIAccessCache() {
+  cache.clear();
+}
