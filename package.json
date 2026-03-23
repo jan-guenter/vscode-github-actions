@@ -1,5 +1,5 @@
 {
-  "name": "@github/vscode-github-actions",
+  "name": "vscode-github-actions",
   "displayName": "GitHub Actions",
   "publisher": "github",
   "icon": "resources/logo.png",
